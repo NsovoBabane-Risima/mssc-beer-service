@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
 @WebMvcTest(BeerController.class)
-public class BeerController {
+public class BeerControllerTest {
 	
 	@Autowired
 	MockMvc mockMvc;
