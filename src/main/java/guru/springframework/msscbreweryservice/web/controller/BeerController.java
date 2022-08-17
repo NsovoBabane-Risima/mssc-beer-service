@@ -3,6 +3,9 @@ package guru.springframework.msscbreweryservice.web.controller;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +23,7 @@ import guru.springframework.msscbreweryservice.web.model.BeerStyle;
 @RequestMapping("/api/v1/beer")
 public class BeerController {
     @GetMapping("/{beerId}")
-	public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId){
+	public ResponseEntity<BeerDto> getBeerById( @NotNull @PathVariable("beerId") UUID beerId){
   	
     	return new ResponseEntity<BeerDto>(BeerDto.builder()
     			.beerName("Malt")
@@ -31,12 +34,12 @@ public class BeerController {
 	}
     
     @PostMapping()
-    public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto) {
+    public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
 		return new ResponseEntity(HttpStatus.CREATED);
     	
     }
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
+    public ResponseEntity updateBeerById( @NotNull @PathVariable("beerId") UUID beerId,@Valid @RequestBody BeerDto beerDto) {
     	return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
