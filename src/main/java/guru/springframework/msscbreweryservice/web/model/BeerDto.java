@@ -31,7 +31,7 @@ public class BeerDto {
 	private String beerName;
 	@NotNull
 	@Positive
-	private Long upc;
+	private String upc;
 	@NotBlank
 	@Positive
 	private BigDecimal price;

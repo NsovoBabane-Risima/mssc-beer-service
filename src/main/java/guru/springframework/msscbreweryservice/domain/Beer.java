@@ -46,9 +46,10 @@ public class Beer {
 	private Timestamp lastModifiedDate;
 	private String beerName;
 	@Column(unique = true)
-	private Long upc;
+	private String upc;
 	private BigDecimal price;
 	private int quantityOnHand;
+	private int quantityToBrew;
     private BeerStyle beerStyle; 
 
 }
