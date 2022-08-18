@@ -32,7 +32,7 @@ public class BeerDto {
 	@NotNull
 	@Positive
 	private String upc;
-	@NotBlank
+	@NotNull
 	@Positive
 	private BigDecimal price;
 	private int quantityOnHand;
