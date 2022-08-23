@@ -35,7 +35,6 @@ public class BeerDto {
 	@NotBlank
 	private String beerName;
 	@NotNull
-	@Positive
 	private String upc;
 	@NotNull
 	@Positive
