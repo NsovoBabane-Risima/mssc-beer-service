@@ -1,5 +1,6 @@
-package guru.springframework.msscbreweryservice.web.model;
+package guru.springframework.msscbeerservice.web.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Positive;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
+import guru.springframework.msscbeerservice.domain.BeerStyle;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +23,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BeerDto {
+public class BeerDto implements Serializable {
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Null
 	private UUID id;
 	@Null

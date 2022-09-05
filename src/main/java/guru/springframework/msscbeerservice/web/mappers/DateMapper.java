@@ -1,4 +1,4 @@
-package guru.springframework.msscbreweryservice.web.mappers;
+package guru.springframework.msscbeerservice.web.mappers;
 
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;

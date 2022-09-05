@@ -1,4 +1,4 @@
-package guru.springframework.msscbreweryservice.domain;
+package guru.springframework.msscbeerservice.domain;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -14,7 +14,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import guru.springframework.msscbreweryservice.web.model.BeerStyle;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,28 +27,28 @@ import lombok.Setter;
 @Builder
 @Entity
 public class Beer {
-	
+
 	@Id
 	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = true)
 	private UUID id;
-	
+
 	@Version
 	private Integer version;
-	
+
 	@CreationTimestamp
 	@Column(updatable = true)
 	private Timestamp createdDate;
-	
+
 	@UpdateTimestamp
 	private Timestamp lastModifiedDate;
 	private String beerName;
 	@Column(unique = true)
 	private String upc;
 	private BigDecimal price;
+	private BeerStyle beerStyle;
 	private int quantityOnHand;
 	private int quantityToBrew;
-    private BeerStyle beerStyle; 
 
 }

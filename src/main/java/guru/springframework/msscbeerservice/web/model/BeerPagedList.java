@@ -1,4 +1,4 @@
-package guru.springframework.msscbreweryservice.web.model;
+package guru.springframework.msscbeerservice.web.model;
 
 import java.util.List;
 
@@ -29,6 +29,10 @@ public class BeerPagedList extends PageImpl<BeerDto> {
 
 	public BeerPagedList(List<BeerDto> content) {
 		super(content);
+	}
+
+	public BeerPagedList(List<BeerDto> list, PageRequest of, long totalElements) {
+		super(list,of,totalElements);
 	}
 
 }

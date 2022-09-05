@@ -1,4 +1,4 @@
-package guru.springframework.msscbreweryservice.web.controller;
+package guru.springframework.msscbeerservice.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;

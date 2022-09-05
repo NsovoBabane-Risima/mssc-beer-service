@@ -1,4 +1,4 @@
-package guru.springframework.msscbreweryservice.bootstrap;
+package guru.springframework.msscbeerservice.bootstrap;
 
 import java.math.BigDecimal;import java.util.UUID;
 
@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import guru.springframework.msscbreweryservice.domain.Beer;
-import guru.springframework.msscbreweryservice.repositories.BeerRepository;
-import guru.springframework.msscbreweryservice.web.model.BeerStyle;
+import guru.springframework.msscbeerservice.domain.Beer;
+import guru.springframework.msscbeerservice.domain.BeerStyle;
+import guru.springframework.msscbeerservice.repositories.BeerRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Component
+//@Component
 public class BeerLoader implements CommandLineRunner {
 
     public static final String BEER_1_UPC = "0631234200036";
