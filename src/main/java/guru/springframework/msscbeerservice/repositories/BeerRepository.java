@@ -12,10 +12,10 @@ import guru.springframework.msscbeerservice.domain.BeerStyle;
 
 public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID>{
 	
-	Page<Beer> findAllBeerByName(String name, Pageable pageable);
+	Page<Beer> findAllByBeerName(String name, Pageable pageable);
 	Page<Beer> findAllByBeerStyle(BeerStyle beerStyle, Pageable pageable);
 	
-	Page<Beer> finadAllByBeerNameAndBeerStyle(String name, BeerStyle beerStyle, Pageable pageable);
+	Page<Beer> findAllByBeerNameAndBeerStyle(String name, BeerStyle beerStyle, Pageable pageable);
 	Beer findBeerByUpc(String upc);
 
 }

@@ -8,10 +8,10 @@
 		<jsr107:defaults enable-management="true"
 			enable-statistics="true"></jsr107:defaults>
 	</service>
-	<cache alis="beerCache" uses-template="config-cache">
+	<cache alias="beerCache" uses-template="config-cache">
 	</cache>
 	<cache alias="beerlistCache" uses-template="config-cache"></cache>
-	<cache alis ="beerByUpc" uses-template ="config-cache"> </cache>
+	<cache alias ="beerByUpc" uses-template ="config-cache"> </cache>
 	<cache-template name="config-cache">
 		<expiry>
 			<ttl unit="minutes">5</ttl>
@@ -20,7 +20,7 @@
 			<heap>1</heap>
 			<offheap unit="MB">
 				1
-			</heap>
+			</offheap>
 		</resources>
 	</cache-template>
 </config>

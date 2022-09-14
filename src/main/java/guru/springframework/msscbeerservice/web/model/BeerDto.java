@@ -51,4 +51,5 @@ public class BeerDto implements Serializable {
 	private int quantityOnHand;
 	@NotNull
     private BeerStyle beerStyle;
+	private int quantityToBrew;
 }

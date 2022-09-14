@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,14 +17,18 @@ import org.springframework.util.StringUtils;
 
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.domain.BeerStyle;
+import guru.springframework.msscbeerservice.exceptions.NotFoundException;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
 import guru.springframework.msscbeerservice.web.mappers.BeerMapper;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import guru.springframework.msscbeerservice.web.model.BeerPagedList;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 //@AllArgsConstructor
+
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class BeerServiceImpl implements BeerService {
@@ -68,11 +71,14 @@ public class BeerServiceImpl implements BeerService {
 		BeerPagedList beerPagedList = null;
 
 		if (!StringUtils.isEmpty(beerName) && !StringUtils.isEmpty(beerStyle)) {
-			pagedBeer = beerRepository.finadAllByBeerNameAndBeerStyle(beerName, beerStyle, pageRequest);
+			
+			pagedBeer = beerRepository.findAllByBeerNameAndBeerStyle(beerName, beerStyle, pageRequest);
 		} else if (!StringUtils.isEmpty(beerName) && StringUtils.isEmpty(beerStyle)) {
-			pagedBeer = beerRepository.findAllBeerByName(beerName, pageRequest);
+			pagedBeer = beerRepository.findAllByBeerName(beerName, pageRequest);
 		} else if (!StringUtils.isEmpty(beerStyle) && StringUtils.isEmpty(beerName)) {
 			pagedBeer = beerRepository.findAllByBeerStyle(beerStyle, pageRequest);
+			
+			log.info("pagedBeer : " + pagedBeer.getContent().get(0).getBeerName());
 		} else {
 			pagedBeer = beerRepository.findAll(pageRequest);
 		}
@@ -80,10 +86,13 @@ public class BeerServiceImpl implements BeerService {
 		if (showInventoryOnHand) {
 
 			beerPagedList = new BeerPagedList(
-					pagedBeer.getContent().stream().map(beer -> beerMapper.beerToBeerDtoWithInventory(beer)).toList(),
+					pagedBeer.getContent().stream().map(beer -> beerMapper.beerToBeerDtoWithInventory(beer)).collect(Collectors.toList()),
 					PageRequest.of(pagedBeer.getPageable().getPageNumber(), pagedBeer.getPageable().getPageSize()),
 					pagedBeer.getTotalElements());
 		} else {
+			
+			log.info(pagedBeer.getContent().stream().map(beerMapper::beerToBeerDto).collect(Collectors.toList()).toString());
+			
 			beerPagedList = new BeerPagedList(
 					pagedBeer.getContent().stream().map(beerMapper::beerToBeerDto).collect(Collectors.toList()),
 					PageRequest.of(pagedBeer.getPageable().getPageNumber(), pagedBeer.getPageable().getPageSize()),
