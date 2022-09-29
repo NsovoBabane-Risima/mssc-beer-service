@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 public class JmsConfig {
 	
 	private static final String BEER_SERVICE_QUEUE ="beerservicequeue";
+	public static final String BREWING_REQUEST_QUEUE = "brewing-request";
 	
 	@Bean
 	public MessageConverter  messageConverter() {

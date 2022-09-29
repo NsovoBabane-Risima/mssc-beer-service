@@ -52,5 +52,6 @@ public class Beer {
 	private BeerStyle beerStyle;
 	private int quantityOnHand;
 	private int quantityToBrew;
+	private int minOnHand;
 
 }
