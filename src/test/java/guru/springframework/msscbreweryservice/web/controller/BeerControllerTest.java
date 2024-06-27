@@ -20,11 +20,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import guru.springframework.brewery.model.BeerDto;
 import guru.springframework.msscbeerservice.bootstrap.BeerLoader;
 import guru.springframework.msscbeerservice.domain.BeerStyle;
 import guru.springframework.msscbeerservice.services.BeerService;
 import guru.springframework.msscbeerservice.web.controller.BeerController;
-import guru.springframework.msscbeerservice.web.model.BeerDto;
 
 
 

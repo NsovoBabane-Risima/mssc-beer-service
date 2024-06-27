@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import guru.springframework.brewery.model.BeerDto;
+import guru.springframework.brewery.model.BeerPagedList;
 import guru.springframework.msscbeerservice.domain.BeerStyle;
 import guru.springframework.msscbeerservice.services.BeerService;
-import guru.springframework.msscbeerservice.web.model.BeerDto;
-import guru.springframework.msscbeerservice.web.model.BeerPagedList;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 

@@ -9,12 +9,14 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import guru.springframework.msscbeerservice.services.inventory.model.BeerInventoryDto;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Service
 public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
 
 	private final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
